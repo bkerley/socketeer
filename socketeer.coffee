@@ -1,29 +1,27 @@
 arDrone = require 'ar-drone'
-http = require('http')
-socket = require('socket.io')
-fs = require('fs')
-haml = require('haml')
-
+http = require 'http'
+socket = require 'socket.io'
+staticFile = require 'node-static'
 
 client = arDrone.createClient()
-client.config 'general:navdata_demo', 'FALSE'
-# control.config 'general:navdata_options', '105971713'
+console.log client.config 'general:navdata_demo', 'FALSE'
 
-source = fs.readFileSync(__dirname + '/public/index.html.haml').toString()
+file = new staticFile.Server('./public')
 
-index = haml(source)()
-
-handler = (req, res) ->
-  res.writeHead 200
-  res.end index
-
-server = http.createServer handler
-server.listen 8080
+server = http.createServer (req, res) ->
+  file.serve req, res, (err, result) ->
+    if err
+      console.log "error #{req.url} #{err.message}"
+      res.writeHead err.status, err.headers
+      res.end
+server.listen 8080, ->
+  console.log "listening"
 
 io = socket.listen(server)
 
 io.sockets.on 'connection', (socket) ->
   socket.on 'client_ok', (data) ->
+    console.log client.config 'general:navdata_demo', 'FALSE'
     dataStream = arDrone.createUdpNavdataStream()
 
     dataStream.on 'data', (navdata) ->
