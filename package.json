@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "nodecopter": "~0.0.2",
-    "ar-drone-png-stream": "~1.0.0"
+    "ar-drone-png-stream": "~1.0.0",
+    "socket.io": "~0.9.14",
+    "haml": "~0.4.3"
   }
 }
