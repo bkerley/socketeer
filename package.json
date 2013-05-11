@@ -4,12 +4,13 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-coffee": "~0.7.0",
-    "grunt-contrib-watch": "~0.4.2"
+    "grunt-contrib-watch": "~0.4.2",
+    "grunt-contrib-haml": "~0.1.0"
   },
   "dependencies": {
     "nodecopter": "~0.0.2",
     "ar-drone-png-stream": "~1.0.0",
     "socket.io": "~0.9.14",
-    "haml": "~0.4.3"
+    "node-static": "~0.6.9"
   }
 }
