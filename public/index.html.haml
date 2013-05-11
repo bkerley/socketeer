@@ -2,13 +2,18 @@
 %html
   %head
     %title The Socketeer
+    :css
+      body {
+        -webkit-perspective: 350px;
+        -webkit-perspective-origin: 50% 50% ;
+      }
+
   %body
-    #raw_json
+    #clunkbin
+    #nodecopter
+      HELLO I AM A NODE COPTER
+
     %script{src: '/socket.io/socket.io.js'}
-    :javascript
-      var socket = io.connect("http://localhost");
-      var raw = document.getElementById('raw_json')
-      socket.on('navdata', function(data) {
-        raw.innerHTML = data;
-      });
-      socket.emit('client_ok', true)
+    %script{src: 'jquery.min.js'}
+    %script{src: 'json2.js'}
+    %script{src: 'socketeer-client.js'}
