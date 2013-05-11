@@ -8,7 +8,7 @@ module.exports = (grunt) ->
     coffee:
       compile:
         files:
-          'asdf.js': 'asdf.coffee'
+          'socketeer.js': 'socketeer.coffee'
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-watch'

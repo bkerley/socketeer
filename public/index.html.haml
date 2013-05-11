@@ -1,0 +1,14 @@
+!!! 5
+%html
+  %head
+    %title The Socketeer
+  %body
+    #raw_json
+    %script{src: '/socket.io/socket.io.js'}
+    :javascript
+      var socket = io.connect("http://localhost");
+      var raw = document.getElementById('raw_json')
+      socket.on('navdata', function(data) {
+        raw.innerHTML = data;
+      });
+      socket.emit('client_ok', true)
